@@ -232,7 +232,7 @@ setPanel.prototype= {
 
 		    scaleBox2.setTitle('@1x');
 		    scaleBox2.setButtonType(NSSwitchButton);
-		    scaleBox2.setState(false);
+		    scaleBox2.setState(true);
 
 		    scaleBox3.setTitle('@2x');
 		    scaleBox3.setButtonType(NSSwitchButton);
