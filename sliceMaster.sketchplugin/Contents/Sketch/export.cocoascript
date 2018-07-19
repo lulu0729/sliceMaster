@@ -94,13 +94,17 @@ sliceMaster.prototype = {
 	    	exportSlicePath = "";
 		log('exportName:'+exportName);
 
-		//切片设置为输入的宽高
-	    sliceFrame.setWidth(options.width);
-        sliceFrame.setHeight(options.height);
+		if(options.width||options.height){
+			//切片设置为输入的宽高
+		    sliceFrame.setWidth(layerFrame.width());
+	        sliceFrame.setHeight(layerFrame.height());
+	   	}else{
+	    	
+	    }
+	    //计算切片与图层的位置差
+	    var sliceX = (layerFrame.width() - sliceFrame.width()) / 2;
+	    var sliceY = (layerFrame.height() - sliceFrame.height()) / 2;
 
-        //计算切片与图层的位置差
-        var sliceX = (layerFrame.width() - sliceFrame.width()) / 2;
-        var sliceY = (layerFrame.height() - sliceFrame.height()) / 2;
         var sliceXFloor = Math.floor(sliceX);
         var sliceYFloor = Math.floor(sliceY);
 
@@ -212,9 +216,9 @@ setPanel.prototype= {
     		scaleBox4 = NSButton.alloc().initWithFrame(NSMakeRect(0,0,250,14));
 
     		conPanel.addTextLabelWithValue('请输入宽度，单位：px');
-		    conPanel.addTextFieldWithValue('48');
+		    conPanel.addTextFieldWithValue('');
 		    conPanel.addTextLabelWithValue('请输入高度，单位：px');
-		    conPanel.addTextFieldWithValue('48');
+		    conPanel.addTextFieldWithValue('');
 		    
 		    conPanel.addButtonWithTitle('确定');
 		    conPanel.addButtonWithTitle('取消');
@@ -224,19 +228,19 @@ setPanel.prototype= {
 
 		    scaleBox1.setTitle('@0.5x');
 		    scaleBox1.setButtonType(NSSwitchButton);
-		    scaleBox1.setState(true);
+		    scaleBox1.setState(false);
 
 		    scaleBox2.setTitle('@1x');
 		    scaleBox2.setButtonType(NSSwitchButton);
-		    scaleBox2.setState(true);
+		    scaleBox2.setState(false);
 
 		    scaleBox3.setTitle('@2x');
 		    scaleBox3.setButtonType(NSSwitchButton);
-		    scaleBox3.setState(true);
+		    scaleBox3.setState(false);
 
 		    scaleBox4.setTitle('@3x');
 		    scaleBox4.setButtonType(NSSwitchButton);
-		    scaleBox4.setState(true);
+		    scaleBox4.setState(false);
 
 		    conPanel.addAccessoryView(comboBox);
 		    conPanel.addAccessoryView(scaleBox1);
