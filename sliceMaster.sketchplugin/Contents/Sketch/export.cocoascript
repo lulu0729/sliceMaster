@@ -96,10 +96,11 @@ sliceMaster.prototype = {
 
 		if(options.width||options.height){
 			//切片设置为输入的宽高
-		    sliceFrame.setWidth(layerFrame.width());
-	        sliceFrame.setHeight(layerFrame.height());
+		    sliceFrame.setWidth(options.width);
+	        sliceFrame.setHeight(options.height);
 	   	}else{
-	    	
+	    	sliceFrame.setWidth(layerFrame.width());
+	        sliceFrame.setHeight(layerFrame.height());
 	    }
 	    //计算切片与图层的位置差
 	    var sliceX = (layerFrame.width() - sliceFrame.width()) / 2;
