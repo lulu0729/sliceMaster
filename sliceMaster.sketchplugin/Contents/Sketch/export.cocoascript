@@ -73,10 +73,10 @@ sliceMaster.prototype = {
 		//Looks like MSLayerArray is a wrapper to NSArray with some convenience functions for layer management. 
 		//The underlying data is in _layers which has an accessor method layers
       	//（这是看到前人的经验，不酱紫写没法新建一个包含该图层的group）
-		var layers = MSLayerArray.arrayWithLayer(layer);
+		//var layers = MSLayerArray.arrayWithLayer(layer);
 
       	//新建一个包含图层的group，用于包含图层和切片
-      	var group = MSLayerGroup.groupFromLayers(layers);
+      	var group = MSLayerGroup.groupWithLayer(layer);
       		group.setName(options.name);
 
       	//给图层新建一个切片，因为已经有group了，所以直接被包含在group里
